@@ -4,10 +4,13 @@ import Post from './Post/Post.jsx';
 
 let MyPosts = () =>{
     return(
-            <div>
-                My posts
+            <div className={s.postsBlock}>
+                <h2>My posts </h2>
                 <div>
-                    New posts
+                    <div>
+                        <textarea></textarea>
+                    </div>
+                    <button>Add post</button>
                 </div>
                 <div className={s.posts}>
                     <Post message='Hi, how are you?' likesCount={0}/>
