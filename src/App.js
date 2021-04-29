@@ -15,10 +15,12 @@ function App(props) {
                 <Header/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
-                  {/*  <Route path='/dialogs' component={Dialogs}/>
+                    {/*  <Route path='/dialogs' component={Dialogs}/>
                     <Route path='/profile' component={Profile}/>*/}
-                    <Route path='/dialogs' render={ () =>  <Dialogs dialogsData={props.dialogsProps.dialogsData}  messagesData={props.dialogsProps.messagesData} />  }/>
-                    <Route path='/profile' render={ () =>  <Profile postsProps = {props.postsProps} addPost={ props.addPost}/>  }/>
+                    <Route path='/dialogs' render={() => <Dialogs dialogsData={props.dialogsProps.dialogsData}
+                                                                  messagesData={props.dialogsProps.messagesData}/>}/>
+                    <Route path='/profile'
+                           render={() => <Profile postsProps={props.postsProps} dispatch={props.dispatch} />}/>
                 </div>
             </div>
         </BrowserRouter>
