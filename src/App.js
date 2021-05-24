@@ -18,9 +18,11 @@ function App(props) {
                     {/*  <Route path='/dialogs' component={Dialogs}/>
                     <Route path='/profile' component={Profile}/>*/}
                     <Route path='/dialogs' render={() => <Dialogs dialogsData={props.dialogsProps.dialogsData}
-                                                                  messagesData={props.dialogsProps.messagesData}/>}/>
+                                                                  messagesData={props.dialogsProps.messagesData}
+                                                                  newMessageBody={props.dialogsProps.newMessageBody}
+                                                                  dispatch={props.dispatch}/>}/>
                     <Route path='/profile'
-                           render={() => <Profile postsProps={props.postsProps} dispatch={props.dispatch} />}/>
+                           render={() => <Profile postsProps={props.postsProps} dispatch={props.dispatch}/>}/>
                 </div>
             </div>
         </BrowserRouter>

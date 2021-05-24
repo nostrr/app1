@@ -1,5 +1,9 @@
+import {act} from "@testing-library/react";
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
+const SEND_MESSAGE = 'SEND-MESSAGE'
 
 let store = {
     _state: {
@@ -17,7 +21,9 @@ let store = {
                 {id: 1, message: 'Hi'},
                 {id: 2, message: 'How is your MMA'},
                 {id: 3, message: 'Yo'}
-            ]
+            ],
+
+            newMessageBody: ''
         },
 
         postsProps: {
@@ -72,6 +78,15 @@ let store = {
             this._state.postsProps.newPostText = action.newText;
             this._callSubscriber(this._state);
         }
+        else if(action.type === UPDATE_NEW_MESSAGE_BODY){
+            this._state.dialogsProps.newMessageBody = action.newText;
+            this._callSubscriber(this._state);
+        }
+        else if(action.type === SEND_MESSAGE){
+            this._state.dialogsProps.messagesData.push({id : 4, message: this._state.dialogsProps.newMessageBody});
+            this._state.dialogsProps.newMessageBody = '';
+            this._callSubscriber(this._state);
+        }
     }
 
 }
@@ -89,4 +104,18 @@ export const updateNewPostTextActionCreator = (text) => {
     }
 }
 
+export  const sendMessageCreator = () =>{
+    return {
+        type : SEND_MESSAGE
+    }
+}
+
+export const updateNewMessageBodyCreator = (text) =>{
+    return{
+        type: UPDATE_NEW_MESSAGE_BODY,
+        newText: text
+    }
+}
+
 export default store;
+window.store = store;
